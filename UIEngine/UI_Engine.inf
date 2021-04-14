@@ -1,0 +1,45 @@
+[Defines]
+  INF_VERSION                    = 0x00010005
+  BASE_NAME                      = UIEngine
+  FILE_GUID                      = 0414c6a9-fef8-46a1-b74e-7eaec3888a29
+  MODULE_TYPE                    = UEFI_APPLICATION
+  VERSION_STRING                 = 0.1
+  ENTRY_POINT                    = UefiMain
+
+[Sources]
+  TestMain.c
+
+  Font/LaffStd.c
+  Font/InstallDMFont.c
+  Font/DisplayFont.c
+
+  DrawBasic/DrawBasic.c
+  DrawBasic/DrawLine.c
+  DrawBasic/DrawRect.c
+  DrawBasic/DrawCircle.c
+
+  EventSupport/KeyEvent.c
+
+  List/ListService.c
+
+  Widgets/Label.c
+  Widgets/Button.c
+  Widgets/PopWindow.c
+  Widgets/Clock.c
+
+[Packages]
+  MdePkg/MdePkg.dec
+  MdeModulePkg/MdeModulePkg.dec
+
+[LibraryClasses]
+  BaseMemoryLib
+  UefiApplicationEntryPoint
+  UefiBootServicesTableLib
+  UefiLib
+  UefiRuntimeServicesTableLib
+  HiiLib
+
+[Protocols]
+  gEfiGraphicsOutputProtocolGuid
+  gEfiSimpleTextInputExProtocolGuid
+  gEfiHiiFontProtocolGuid
