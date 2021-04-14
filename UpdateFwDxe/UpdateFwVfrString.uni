@@ -1,0 +1,50 @@
+///** @file
+//
+//Copyright (c) 2018 Loongson Technology Corporation Limited (www.loongson.cn).
+//All intellectual property rights(Copyright, Patent and Trademark) reserved.
+//
+// Copyright (c) 2007 - 2018, Intel Corporation. All rights reserved.<BR>
+// This program and the accompanying materials
+// are licensed and made available under the terms and conditions of the BSD License
+// which accompanies this distribution.  The full text of the license may be found at
+// http://opensource.org/licenses/bsd-license.php
+//
+// THE PROGRAM IS DISTRIBUTED UNDER THE BSD LICENSE ON AN "AS IS" BASIS,
+// WITHOUT WARRANTIES OR REPRESENTATIONS OF ANY KIND, EITHER EXPRESS OR IMPLIED.
+//
+// Module Name:
+//
+//   DeviceManager.vfr
+//**/
+
+/=#
+
+
+#langdef en-US  "English"
+#langdef fr-FR  "Francais"
+#langdef x-UEFI-ns "UefiNameSpace"
+
+#string STR_FORM_SET_TITLE                  #language en-US  "Test Update Fw"
+                                            #language fr-FR  "Test Update Fw"
+#string STR_FORM_SET_TITLE_HELP             #language en-US  "Oh oh oh oh oh oh oh !!!"
+                                            #language fr-FR  "Oh oh oh oh oh oh oh !!!"
+#string STR_UPDATE_FW                       #language en-US  "Update Fw"
+                                            #language fr-FR  "Update Fw"
+#string STR_UPDATE_FW_HELP                  #language en-US  "La la la la la la la !!!"
+                                            #language fr-FR  "La la la la la la la !!!"
+#string STR_EMPTY_STRING                    #language en-US  ""
+                                            #language fr-FR  ""
+#string STR_EXIT_STRING                     #language en-US  "Press ESC to exit."
+                                            #language fr-FR  "Press ESC to exit."
+#string STR_DEVICE_PATH                     #language en-US  ""
+                                            #language fr-FR  ""
+#string STR_NONE                            #language en-US  "None"
+                                            #language fr-FR  "None"
+#string STR_CHECK_PASSWORD_INPUT_1          #language en-US  "Please input your password"
+                                            #language fr-FR  "Please input your password"
+#string STR_CHECK_PASSWORD_INPUT_2          #language en-US  "Input password for the second time"
+                                            #language fr-FR  "Input password for the second time"
+#string STR_CHECK_PASSWORD_INPUT_3          #language en-US  "Input password for the third time"
+                                            #language fr-FR  "Input password for the third time"
+#string STR_CHECK_PASSWORD_SHUTDOWN         #language en-US  "Password error! Shut down immediately"
+                                            #language fr-FR  "Password error! Shut down immediately"
