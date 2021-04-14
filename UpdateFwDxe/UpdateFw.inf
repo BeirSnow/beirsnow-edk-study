@@ -1,0 +1,82 @@
+## @file
+#
+#  Copyright (c) 2018 Loongson Technology Corporation Limited (www.loongson.cn).
+#  All intellectual property rights(Copyright, Patent and Trademark) reserved.
+#
+# This driver shows how HII protocol, VFR and UNI files are used to create a HII 
+# driver which can be dipslayed and configured by a UEFI HII Form Browser.
+#
+# Copyright (c) 2007 - 2017, Intel Corporation. All rights reserved.<BR>
+#
+#  This program and the accompanying materials
+#  are licensed and made available under the terms and conditions of the BSD License
+#  which accompanies this distribution. The full text of the license may be found at
+#  http://opensource.org/licenses/bsd-license.php
+#
+#  THE PROGRAM IS DISTRIBUTED UNDER THE BSD LICENSE ON AN "AS IS" BASIS,
+#  WITHOUT WARRANTIES OR REPRESENTATIONS OF ANY KIND, EITHER EXPRESS OR IMPLIED.
+##
+
+[Defines]
+  INF_VERSION                    = 0x00010005
+  BASE_NAME                      = UpdateFw
+  MODULE_UNI_FILE                = UpdateFwVfrString.uni
+  FILE_GUID                      = 888E0917-C7CE-4315-728C-DC01ED9E1C28
+  MODULE_TYPE                    = DXE_DRIVER
+  VERSION_STRING                 = 1.0
+  ENTRY_POINT                    = UpdateFwInit
+  UNLOAD_IMAGE                   = UpdateFwUnload
+
+#
+# The following information is for reference only and not required by the build tools.
+#
+#  VALID_ARCHITECTURES           = IA32 X64 IPF EBC
+#
+
+[Sources]
+  UpdateFw.c
+  NVDataStruc.h
+  UpdateFw.h
+  UpdateFwVfrString.uni
+  UpdateFwVfr.vfr
+
+[Packages]
+  MdePkg/MdePkg.dec
+  MdeModulePkg/MdeModulePkg.dec
+  LsRefCodePkg/Loongson.dec
+
+[LibraryClasses]
+  BaseLib
+  MemoryAllocationLib
+  UefiBootServicesTableLib
+  UefiDriverEntryPoint
+  UefiRuntimeServicesTableLib
+  BaseMemoryLib
+  DebugLib
+  HiiLib
+  PrintLib
+  UefiLib
+  DevicePathLib
+  FileExplorerLib
+  FileHandleLib
+
+[Guids]
+  gEfiIfrTianoGuid                              ## PRODUCES ## UNDEFINED
+  gEfiIfrFrontPageGuid
+  gDeviceListFormSetGuid
+  gPasswordSetupFormSetGuid
+
+[Protocols]
+  gEfiDevicePathProtocolGuid
+  gEfiHiiConfigRoutingProtocolGuid              ## CONSUMES
+  gEfiHiiConfigAccessProtocolGuid               ## PRODUCES
+  gEfiFormBrowser2ProtocolGuid                  ## CONSUMES
+  gEdkiiFormBrowserExProtocolGuid
+  gEfiLsServiceProtocolGuid
+  gEfiSimpleFileSystemProtocolGuid
+  gEdkiiFormDisplayEngineProtocolGuid
+  gEfiPasswordProtocolGuid
+
+[Depex]
+  gEfiSimpleTextOutProtocolGuid AND gEfiHiiDatabaseProtocolGuid AND gEfiVariableArchProtocolGuid AND gEfiVariableWriteArchProtocolGuid
+

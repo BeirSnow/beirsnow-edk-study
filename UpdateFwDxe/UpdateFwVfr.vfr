@@ -1,0 +1,68 @@
+///** @file
+//
+//  Sample Setup formset.
+//
+//  Copyright (c) 2018 Loongson Technology Corporation Limited (www.loongson.cn).
+//  All intellectual property rights(Copyright, Patent and Trademark) reserved.
+//
+//  Copyright (c) 2004 - 2018, Intel Corporation. All rights reserved.<BR>
+//  This program and the accompanying materials
+//  are licensed and made available under the terms and conditions of the BSD License
+//  which accompanies this distribution.  The full text of the license may be found at
+//  http://opensource.org/licenses/bsd-license.php
+//
+//  THE PROGRAM IS DISTRIBUTED UNDER THE BSD LICENSE ON AN "AS IS" BASIS,
+//  WITHOUT WARRANTIES OR REPRESENTATIONS OF ANY KIND, EITHER EXPRESS OR IMPLIED.
+//
+//**/
+
+
+#include "NVDataStruc.h"
+
+formset
+  guid      = UPDATE_FW_FORMSET_GUID,
+  title     = STRING_TOKEN(STR_FORM_SET_TITLE),
+  help      = STRING_TOKEN(STR_FORM_SET_TITLE_HELP),
+  classguid = gEfiIfrFrontPageGuid,
+
+  //
+  // Define a Buffer Storage (EFI_IFR_VARSTORE)
+  //
+  varstore UPDATE_FIRMWARE_CONFIGURATION,     // This is the data structure type
+    varid = CONFIGURATION_VARSTORE_ID,       // Optional VarStore ID
+    name  = UpdateFw,                      // Define referenced name in vfr
+    guid  = UPDATE_FW_FORMSET_GUID;        // GUID of this buffer storage
+
+  //
+  // Define a Form (EFI_IFR_FORM)
+  //
+  form formid = 0x1,
+    title  = STRING_TOKEN(STR_FORM_SET_TITLE);
+
+    goto 0x1,
+          prompt = STRING_TOKEN(STR_UPDATE_FW),
+          help = STRING_TOKEN(STR_UPDATE_FW_HELP),
+          flags = INTERACTIVE,
+          key = KEY_VALUE_UPDATE_FW;
+    //
+    // Add this invisible text in order to indicate enter Boot Maintenance Manager form.
+    // To trigger the form open action.
+    //
+    suppressif TRUE;
+       text
+           help  = STRING_TOKEN(STR_NONE),
+           text  = STRING_TOKEN(STR_NONE),
+           flags = INTERACTIVE,
+           key   = KEY_VALUE_TRIGGER_FORM_OPEN_ACTION;
+    endif;
+
+    label LABEL_FORM_MAIN_START;
+    //
+    // This is where we will dynamically add a Action type op-code to show
+    // the platform information.
+    //
+    label LABEL_FORM_MAIN_END;
+
+  endform;
+endformset;
+
